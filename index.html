@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f2eb" />
+    <title>Little Memory — Match the cards</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="game">
+      <header class="topbar">
+        <a class="wordmark" href="#" aria-label="Little Memory home">
+          <span class="wordmark-icon" aria-hidden="true">✳</span>
+          little memory
+        </a>
+        <span class="topbar-note">A tiny pause for your brain</span>
+      </header>
+
+      <section class="game-layout" aria-labelledby="game-title">
+        <div class="game-copy">
+          <p class="eyebrow"><span aria-hidden="true">✦</span> THE DAILY BRAIN BREAK</p>
+          <h1 id="game-title">A little game<br />of <span>remembering.</span></h1>
+          <p class="intro">
+            Turn over the cards and find the matching sets. There’s one special
+            trio hiding in the mix.
+          </p>
+
+          <div class="scoreboard" aria-label="Game stats">
+            <div class="stat">
+              <span class="stat-label">MOVES</span>
+              <span class="stat-value" id="moves">0</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat">
+              <span class="stat-label">MATCHED</span>
+              <span class="stat-value"><span id="matches">0</span><span class="stat-total"> / 12</span></span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat">
+              <span class="stat-label">TIME</span>
+              <span class="stat-value" id="timer">00:00</span>
+            </div>
+          </div>
+
+          <div class="game-actions">
+            <button class="restart-button" id="restart" type="button">
+              <span aria-hidden="true">↻</span> Start over
+            </button>
+            <span class="hint">No rush. Take a breath.</span>
+          </div>
+        </div>
+
+        <div class="board-wrap">
+          <div class="board-heading">
+            <span class="board-title">THE GARDEN</span>
+            <span class="board-status" id="status" aria-live="polite">Find a pair to begin</span>
+          </div>
+          <div class="board" id="board" role="group" aria-label="Memory game cards"></div>
+          <p class="board-footnote"><span aria-hidden="true">✳</span> 25 cards · 12 sets · one lovely little trio</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Made for a moment of calm.</span>
+        <span aria-hidden="true">✿</span>
+      </footer>
+    </main>
+  </body>
+</html>
