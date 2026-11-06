@@ -1,5 +1,17 @@
-const symbols = ["🍓", "🌼", "🐝", "🍋", "🐸", "🌷", "🍄", "🐞", "🍐", "🦋", "🌱"];
-const trioSymbol = "🍒";
+const animals = [
+  { id: "cat", name: "Cat", image: "images/animal-cat.jpg" },
+  { id: "dog", name: "Dog", image: "images/animal-dog.jpg" },
+  { id: "rabbit", name: "Rabbit", image: "images/animal-rabbit.jpg" },
+  { id: "fox", name: "Fox", image: "images/animal-fox.jpg" },
+  { id: "owl", name: "Owl", image: "images/animal-owl.jpg" },
+  { id: "hedgehog", name: "Hedgehog", image: "images/animal-hedgehog.jpg" },
+  { id: "turtle", name: "Turtle", image: "images/animal-turtle.jpg" },
+  { id: "koala", name: "Koala", image: "images/animal-koala.jpg" },
+  { id: "lion", name: "Lion", image: "images/animal-lion.jpg" },
+  { id: "panda", name: "Panda", image: "images/animal-panda.jpg" },
+  { id: "otter", name: "Otter", image: "images/animal-otter.jpg" },
+  { id: "squirrel", name: "Squirrel", image: "images/animal-squirrel.jpg", groupSize: 3 },
+];
 const mismatchDelay = 850;
 
 const board = document.querySelector("#board");
@@ -53,14 +65,8 @@ function startTimer() {
 }
 
 function makeDeck() {
-  const deck = symbols.flatMap((symbol) => [
-    { symbol, groupSize: 2 },
-    { symbol, groupSize: 2 },
-  ]);
-  deck.push(
-    { symbol: trioSymbol, groupSize: 3 },
-    { symbol: trioSymbol, groupSize: 3 },
-    { symbol: trioSymbol, groupSize: 3 },
+  const deck = animals.flatMap((animal) =>
+    Array.from({ length: animal.groupSize || 2 }, () => ({ ...animal, groupSize: animal.groupSize || 2 })),
   );
   return shuffle(deck);
 }
@@ -100,7 +106,7 @@ function handleCardClick(index) {
   locked = true;
 
   const isMatch = selectedCards.every(
-    (selectedIndex) => cards[selectedIndex].symbol === firstCard.symbol,
+    (selectedIndex) => cards[selectedIndex].id === firstCard.id,
   );
 
   if (isMatch) {
@@ -150,7 +156,7 @@ function renderBoard() {
     button.setAttribute(
       "aria-label",
       card.revealed || card.matched
-        ? `${card.symbol}${card.groupSize === 3 ? ", part of the trio" : ", part of a pair"}`
+        ? `${card.name}${card.groupSize === 3 ? ", part of the trio" : ", part of a pair"}`
         : `Card ${index + 1}, face down, hamster dressed as Santa`,
     );
     button.setAttribute("aria-pressed", String(card.revealed || card.matched));
@@ -162,18 +168,19 @@ function renderBoard() {
     photo.setAttribute("aria-hidden", "true");
     button.append(photo);
 
+    const animalImage = document.createElement("img");
+    animalImage.className = "card-animal";
+    animalImage.src = card.image;
+    animalImage.alt = "";
+    animalImage.setAttribute("aria-hidden", "true");
+    button.append(animalImage);
+
     const hat = document.createElement("img");
     hat.className = "card-back-hat";
     hat.src = "images/santa-hat.svg";
     hat.alt = "";
     hat.setAttribute("aria-hidden", "true");
     button.append(hat);
-
-    const symbol = document.createElement("span");
-    symbol.className = "card-emoji";
-    symbol.setAttribute("aria-hidden", "true");
-    symbol.textContent = card.symbol;
-    button.append(symbol);
 
     button.addEventListener("click", () => handleCardClick(index));
     board.append(button);
