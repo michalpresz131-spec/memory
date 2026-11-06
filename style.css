@@ -361,7 +361,7 @@ h1 span {
   100% { transform: scale(1); }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 840px) {
   .game {
     width: min(520px, calc(100% - 36px));
   }
