@@ -151,15 +151,29 @@ function renderBoard() {
       "aria-label",
       card.revealed || card.matched
         ? `${card.symbol}${card.groupSize === 3 ? ", part of the trio" : ", part of a pair"}`
-        : `Card ${index + 1}, face down`,
+        : `Card ${index + 1}, face down, hamster dressed as Santa`,
     );
     button.setAttribute("aria-pressed", String(card.revealed || card.matched));
 
-    const emoji = document.createElement("span");
-    emoji.className = "card-emoji";
-    emoji.setAttribute("aria-hidden", "true");
-    emoji.textContent = card.symbol;
-    button.append(emoji);
+    const photo = document.createElement("img");
+    photo.className = "card-photo";
+    photo.src = "images/hamster-peach.jpg";
+    photo.alt = "";
+    photo.setAttribute("aria-hidden", "true");
+    button.append(photo);
+
+    const hat = document.createElement("img");
+    hat.className = "card-back-hat";
+    hat.src = "images/santa-hat.svg";
+    hat.alt = "";
+    hat.setAttribute("aria-hidden", "true");
+    button.append(hat);
+
+    const symbol = document.createElement("span");
+    symbol.className = "card-emoji";
+    symbol.setAttribute("aria-hidden", "true");
+    symbol.textContent = card.symbol;
+    button.append(symbol);
 
     button.addEventListener("click", () => handleCardClick(index));
     board.append(button);

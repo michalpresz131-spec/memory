@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 140">
+  <defs>
+    <linearGradient id="velvet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#df5b50"/>
+      <stop offset=".48" stop-color="#c93132"/>
+      <stop offset="1" stop-color="#8f202a"/>
+    </linearGradient>
+    <linearGradient id="fur" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffef8"/>
+      <stop offset="1" stop-color="#d9d4c9"/>
+    </linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.5" height="1.5">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <path d="M25 105C53 48 93 21 148 18c-9 31-4 60 14 84-45 19-90 22-137 3Z" fill="#42251e" opacity=".22" filter="url(#shadow)"/>
+  <path d="M23 97C51 42 89 13 145 12c-8 30-2 57 17 81-43 20-90 23-139 4Z" fill="url(#velvet)" stroke="#92272b" stroke-width="2"/>
+  <path d="M38 81c27-38 60-58 102-63" fill="none" stroke="#f08a78" stroke-linecap="round" stroke-width="5" opacity=".45"/>
+  <path d="M20 92c34 9 83 7 139-9 9 3 14 10 12 18-3 15-21 25-53 30-41 7-76 2-99-9-13-7-17-19 1-30Z" fill="url(#fur)" stroke="#ded8cd" stroke-width="2"/>
+  <path d="M34 102c34 9 82 8 125-6" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="4" opacity=".9"/>
+  <path d="M139 13c1-8 10-12 18-8 8 4 11 14 6 22-4 7-12 10-19 5-7-4-9-12-5-19Z" fill="url(#fur)" stroke="#ded8cd" stroke-width="2"/>
+  <circle cx="147" cy="12" r="3" fill="#fff" opacity=".85"/>
+</svg>
